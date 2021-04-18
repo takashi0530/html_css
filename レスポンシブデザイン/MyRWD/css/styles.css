@@ -1,0 +1,55 @@
+/* 共通スタイル */
+/* どのような幅でも適応されるスタイルなので、メディアクエリの外に書く */
+
+/* small screen */
+/* bodyに対するmarginをリセットする */
+body {
+    margin: 0px;
+}
+
+aside {
+    display: none;
+}
+
+.image {
+    background: pink;
+    height: 100px;
+}
+
+.text {
+    background: silver;
+    height: 100px;
+}
+
+
+
+/* medium screen */
+/* 600px〜799pxの場合 */
+@media (min-width: 600px) {
+    section {
+        display: flex;
+    }
+
+    .image {
+        width: 200px;
+    }
+
+    .text {
+        flex: 1;
+    }
+}
+
+/* large screen */
+/* 800px以上の場合 */
+@media (min-width: 800px) {
+    section {
+        width: 800px;
+        margin: 0 auto;
+    }
+
+    aside {
+        display: block;
+        background: plum;
+        width: 160px;
+    }
+}

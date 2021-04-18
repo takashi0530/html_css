@@ -1,0 +1,209 @@
+/* body周辺の余白をリセット */
+body {
+    margin: 0;
+    font-size: 16px;
+    font-family: Verdana, sans-serif;
+    color: #333;
+}
+
+header {
+    background: #f59a00;
+    color: #fff;
+    text-align: center;
+    padding-top: 64px;
+}
+
+/* 余白をリセット */
+/* header内のh1全てが対象 */
+/* header内のp全てが対象 */
+header h1,
+header p {
+    margin: 0;
+}
+
+header img {
+    width: 280px;
+    /* 画像の下にある余白を取り除く ベースラインを下に */
+    vertical-align: bottom;
+}
+
+.btn {
+    /* ダウンロードの文字の下線を消す */
+    text-decoration: none;
+    /* ボタンの背景色 */
+    background: #fff;
+    /* ボタンの文字色 */
+    color: #f59a00;
+    /* ボタンをインライン要素からブロック要素に */
+    display: block;
+    /* ボタンの横幅 */
+    width: 140px;
+    /* ボタンの高さを指定 */
+    line-height: 44px;
+    /* ボタンの上下に余白を入れて、左右は中央揃えに */
+    margin: 40px auto 48px;
+    /* ボタンの文字の大きさ */
+    font-size: 14px;
+    /* ボタンの文字を太文字に */
+    font-weight: bold;
+    /* ボタンの形を角丸に */
+    border-radius: 4px;
+}
+
+/* ボタンをhoverさせたときに薄くなる */
+.btn:hover {
+    opacity: 0.9;
+}
+
+
+/* featuresクラスの中のimg全てに適用 */
+.features img {
+    width: 100%;
+}
+
+/* featuresクラスの直下のh1のみに適用 */
+.features > h1 {
+    text-align: center;
+    padding: 64px 0;
+    /* 太字にしたくない */
+    font-weight: normal;
+}
+
+/* featuresクラスのなかのcontainerクラス全てに適用 */
+.features .container {
+    margin: 0 32px;
+}
+
+/* featuresクラスの中のpタグ全てに適用 */
+.features p {
+    /* 行間をゆったりとさせる */
+    line-height: 1.8;
+}
+
+/* featuresクラスの中のsectionタグ全てに適用 */
+.features section {
+    padding-bottom: 64px;
+}
+
+/* メンバー紹介 */
+.members {
+    background: #f2f2f3;
+}
+
+.members > h1 {
+    text-align: center;
+    padding: 64px 0;
+    /* 太字にしたくない */
+    font-weight: normal;
+}
+
+.members ul {
+    /* liのデフォルトの黒丸を消す */
+    list-style: none;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+/* membersクラスの中のimgタグ全てに適用 */
+.members img {
+    /* プロフィール画像の横幅を設定 */
+    width: 160px;
+    /* プロフィール画像を真円にする */
+    border-radius: 50%;
+}
+
+/* membersクラスの中のh2タグ(メンバーの名前)全てに適用 */
+.members h2 {
+    font-size: 20px;
+}
+
+.members li {
+    padding-bottom: 64px ;
+}
+
+.call-to-action {
+    background: #f59a00;
+    color: #fff;
+    text-align: center;
+    padding: 64px 0;
+}
+
+/* ダウンロード */
+.call-to-action h1 {
+    font-weight: normal;
+}
+
+.call-to-action .btn {
+    /* .btnのスタイルの上下余白を打ち消して上書きする */
+    margin: 0 auto;
+}
+
+/* フッター コピーライト部分 */
+footer {
+    padding: 64px 0;
+    background: #323135;
+    color: #98969c;
+    text-align: center;
+}
+
+
+
+/* PC表示のスタイル 900px以上の場合 */
+@media (min-width: 900px) {
+
+    /* ヘッダー部分・画像部分 */
+    header .container {
+        display: flex;
+        width: 800px;
+        margin: 0 auto;
+    }
+    header .info {
+        width: 60%;
+        align-self: center;
+    }
+    header .pic {
+        width: 40%;
+    }
+
+    /* 特徴紹介 */
+    .features .container {
+        width: 800px;
+        margin: 0 auto;
+    }
+    .features section {
+        display: flex;
+        justify-content: space-between;
+    }
+    /* 偶数番目に適用 */
+    .features section:nth-child(even) {
+        /* 並べる順番を逆にする */
+        flex-direction: row-reverse;
+    }
+    .features .pic {
+        width: 50%;
+    }
+    .features .info {
+        width: calc(50% - 32px);
+    }
+
+
+    /* メンバー紹介 */
+    .members ul {
+        width: 800px;
+        margin: 0 auto;
+        display: flex;
+        /* メンバー間の隙間に対して均等に余白を割り当てる */
+        justify-content: space-between;
+    }
+    .members li {
+        width: 250px;
+    }
+
+
+
+}
+
+
+
+
