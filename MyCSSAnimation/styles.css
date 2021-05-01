@@ -1,0 +1,316 @@
+body {
+    padding: 64px;
+}
+.box, .box2, .box3, .box4, .box5, .box6, .box7, .box8, .box9, .box10, .box11, .box12, .box13, .box14, .box15 .box16 .box17 .box18 .box19 {
+    width: 100px;
+    height: 100px;
+    background: orange;
+}
+
+
+
+
+
+.box, .box2, .box3, .box4, .box5 {
+    /* 右 */
+    transition-property: transform;
+    transition-duration: 1s;
+
+    /* 左上を起点に動かす 変形させる   ※translateはtransform-originの影響を受けない*/
+    /* transform-origin: top left; */
+}
+
+.box:hover {
+    /* 右下に移動する */
+    transform: translate(50px, 20px);
+}
+
+.box2:hover {
+    /* 30度傾ける */
+    transform: rotate(30deg);
+}
+
+.box3:hover {
+    /* 横の幅が半分  縦の高さが2倍 */
+    transform: scale(0.5, 2);
+}
+
+.box4:hover {
+    /* 移動してから回転する */
+    transform: translateX(100px) rotate(30deg);
+}
+
+.box5:hover {
+    /* 回転してから移動する */
+    transform: rotate(30deg) translateX(100px)
+}
+
+
+
+.box6 {
+    /* 色の方にもアニメーションをさせたい → background */
+    transition-property: transform, background;
+
+    /* 全てのtransitionの対象にしたい場合 → transition-property: all;  ※アニメーションさせたくないものまでアニメーションさせてしまうこともあるため、明示的にプロパティを指定させてあげるべ */
+    transition-property: all;
+
+    transition-duration: 1s;
+
+    /* 左上を起点に動かす 変形させる   ※translateはtransform-originの影響を受けない*/
+    /* transform-origin: top left; */
+}
+.box6:hover {
+    transform: translate(30px);
+    background: skyblue;
+}
+
+
+
+
+.box7 {
+    transition-property: transform;
+    /* 1秒かけてアニメーションさせる */
+    transition-duration: .3s;
+
+    /* 1秒後にアニメーションを始める */
+    /* transition-delay: 1s; */
+}
+.box7:hover {
+    transform: translateX(30px);
+}
+
+
+
+.box8 {
+    transition-property: transform;
+    transition-duration: .3s;
+
+    /* 既定値  ゆっくり速度が上がって、ゆっくり速度が落ちる */
+    transition-timing-function: ease;
+
+    /* 最初早くて最後遅い 小さなUI部品、ちょっとしたアラートなどに */
+    /* transition-timing-function: ease-out; */
+
+    /* 最初ゆっくり  大きなUI部品 ドロワーなど */
+    /* transition-timing-function: ease-in-out; */
+
+    /* 等速で回転する部品等 ローディングアイコン  最初から最後まで同じスピードで動く */
+    /* transition-timing-function: linear; */
+
+
+
+    /* 右側で飛び出すような動き  ※開発者ツールからベジェをいじってコピーする */
+    transition-timing-function: cubic-bezier(0.38, 0.35, 0.47, 1.76);
+
+}
+.box8:hover {
+    transform: translateX(30px);
+}
+
+
+
+
+
+
+.box9 {
+    /* transition-property: transform;
+    transition-duration: .3s;
+    transition-timing-function; ease-out; */
+
+    /* 上3つをまとめて記述することができる 順不同  */
+    /* transition-delay を指定するときは、時間指定の最初がduration、次の時間指定がdelayとなる  */
+    transition: transform .3s ease-out 1s, background .5s;
+}
+.box9:hover {
+    transform: translateX(30px);
+    background: skyblue;
+}
+
+
+
+
+
+/* @keyframe の名前をつける。今回は「move」 */
+@keyframes move {
+    /* 最初は変形していないということを明治するためnone */
+    0% {
+        transform: none;
+        /* 最初の回転部分だけlenear（等速）  ※他の動きはデフォルトのeaseになる */
+        animation-timing-function: linear;
+    }
+    /* 80%の時点でのスタイルを指定 */
+    80% {
+        transform: translateX(200px) rotate(360deg);
+    }
+    /* 100%の時点でのスタイルを指定 */
+    100% {
+        transform: translateX(300px) rotate(360deg);
+    }
+}
+.box10 {
+    /* @keyframeで名付けた名前 「move」を指定する */
+    animation-name: move;
+
+    /* アニメーションにかかる時間を指定 */
+    /* animation-duration: 2s; */
+
+    /* アニメーションの開始時間を遅らせる */
+    /* animation-delay: 1s; */
+
+    /* アニメーションが終わったあとにそのままの状態をキープする */
+    /* animation-fill-mode: forwards; */
+
+    /* アニメーションを繰り返す回数  infinite で無限に繰り替える*/
+    /* animation-iteration-count: 2; */
+    /* animation-iteration-count: infinite; */
+
+    /* 右に動いたあと、折り返してアニメーションさせる */
+    /* animation-direction: alternate; */
+
+    /* 逆再生させる */
+    /* animation-direction: reverse; */
+
+    /* 逆再生させたあと、折り返す */
+    /* animation-direction: alternate-reverse; */
+
+    /* 等速でアニメーションする */
+    /* animation-timing-function: linear; */
+
+
+    /* 一括指定プロパティ  ※時間の値は、1つ目duration   2つ目がdelay */
+    /* animation: move 2s infinite 1s; */
+}
+
+
+
+
+.box11 {
+
+}
+
+.box11:hover {
+
+}
+
+
+
+
+/* ゆるっと色が変わるボタン */
+.btn {
+    margin: 50px 0;
+    padding: 16px 32px;
+    /* hsl(色相、彩度、輝度) で色を指定できる     ※hsl()に対して、hsla()は透明度を加えたもの */
+    background: hsl(200, 100%, 40%);
+    color: #fff;
+    border-radius: 4px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: background .3s;
+}
+.btn:hover {
+    background: hsl(200, 100%, 45%);
+}
+
+
+
+
+
+
+
+/* ローディングアイコン */
+.loading {
+    margin: 50px 0;
+    width: 40px;
+    height: 40px;
+    border: 8px solid #ccc;
+    border-radius: 50%;
+
+    /* 四角形の左部分のみに対してボーダーカラーを指定： 透明にする */
+    border-right-color: transparent;
+
+    /* keyframeの名前がspinを対象とする 0.8秒かけてアニメする  無限でアニメする  等速スピードでアニメする */
+    animation: spin .8s infinite linear;
+}
+@keyframes spin {
+    /* 0％ 100% は from to と書いても同じ意味となる */
+    /* 0% { */
+    from {
+        transform: none;
+    }
+    /* 100% { */
+    to {
+        /* 360度回転させる */
+        transform: rotate(360deg);
+    }
+}
+
+
+
+
+
+
+/* ポップアップアニメーション */
+.message {
+    width: 300px;
+    padding: 8px 16px;
+    background: #2c2c2c;
+    color: #ddd;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .2);
+
+    /* 右下に固定配置 */
+    position: fixed;
+    right: 32px;
+    bottom: 32px;
+
+    /* 2秒間かけてkeyframeの名前がpopupのものを実行  forwardsで最後の消えた状態をキープ點せ続けることができる。記述なしでもとの状態に戻る(表示され続ける) */
+    animation: popup 2s forwards;
+}
+@keyframes popup {
+    0% {
+        transform: translateY(20px);
+        opacity: 0;
+
+        /* 最初ふわっと出現させる */
+        animation-timing-function: ease-out;
+    }
+    /* 20と80%は同じなのでカンマ区切りでまとめて記述できる */
+    20%, 80% {
+        transform: none;
+        opacity: 1;
+    }
+    /* 80% {
+        transform: none;
+        opacity: 1;
+    } */
+    100% {
+        transform: translateY(20px);
+        opacity: 0;
+
+        /* noneとすることでマウスのイベントに反応しなくなる（重なったボタンを全て押せるようになる） */
+        pointer-events: none;
+    }
+}
+
+/* 重なるボタン */
+button {
+    width: 300px;
+    padding: 8px 16px;
+    /* 右下に固定配置 */
+    position: fixed;
+    right: 32px;
+    bottom: 32px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
